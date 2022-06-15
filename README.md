@@ -1,5 +1,5 @@
 # TradeBook-analysis
-This project is developed to help traders to analyze there tradebook very eficiantly.
+This project is developed to help traders to analyze their trade books very efficiently.
 
 Primary Goal: Analyze trade book and give actionable insight from them.
 
