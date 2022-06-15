@@ -1,0 +1,36 @@
+-- Data cleaning and remove unwanted columns from original data
+CREATE table Taxpnl_fno_1
+SELECT ID, Symbol,Entry_Date,
+Exit_Date, Quantity,Buy_Value,
+Sell_Value,Profit,DATEDIFF(Exit_Date , Entry_Date) as Period_of_holding,Turnover from Taxpnl_fno;
+
+
+-- Create combine table of Taxpnl_eqt and Taxpnl_fno
+CREATE table combine_Taxpnl 
+select * from Taxpnl_eqt te 
+union
+select * from Taxpnl_fno_1 tf ;
+
+
+-- Made Symbol table and give primary key to the ID
+CREATE TABLE Symbol
+SELECT DISTINCT(Symbol) FROM combine_pnl
+UNION
+SELECT DISTINCT(Symbol) FROM combine_tb
+UNION
+SELECT DISTINCT(Symbol) FROM combine_Taxpnl;
+
+-- ADD column ID as PRIMARY KEY 
+ALTER TABLE Symbol ADD ID INT  NOT NULL AUTO_INCREMENT PRIMARY KEY;
+
+-- add Symbol.ID in all TABLES
+CREATE table combine_tb2
+SELECT s.ID,ct.Symbol,ct.Trade_date,ct.Exchange ,ct.Segment ,ct.Trade_type ,
+      ct.Quantity ,ct.Price ,ct.Trade_id ,ct.Order_id ,ct.Order_Execution_time 
+FROM combine_tb ct  
+INNER JOIN Symbols s  
+on s.Symbol = ct.Symbol ;
+
+
+
+
