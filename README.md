@@ -12,3 +12,7 @@ And it gives total profit loss in slicer within selected period like year,quarte
 
 This insights helps traders to set there stoploss and trake there profit loss within a single dashbord so 
 thay don't have to find trade row by row.
+
+
+https://user-images.githubusercontent.com/65004462/173748365-917debba-1de3-4aad-b1ef-ff5ee8bd0257.mp4
+
